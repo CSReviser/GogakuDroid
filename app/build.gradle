@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "com.github.naofum.gogakudroid"
         minSdkVersion 21
-        targetSdkVersion 32
+        targetSdkVersion 29
         multiDexEnabled true
     }
 
