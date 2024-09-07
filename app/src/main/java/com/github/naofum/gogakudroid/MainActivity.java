@@ -73,10 +73,21 @@ public class MainActivity extends Activity {
 	private AdView adView;
 
 	static {
-		ENGLISH.put("basic0", "小学生の基礎英語");
+//		ENGLISH.put("basic0", "小学生の基礎英語");
+		ENGLISH.put("italian/kouza", "まいにちイタリア語【初級編】");
+		ENGLISH.put("italian/kouza2", "まいにちイタリア語【応用編】");
+		ENGLISH.put("german/kouza", "まいにちドイツ語【初級編】");
+		ENGLISH.put("german/kouza2", "まいにちドイツ語【応用編】");
+		ENGLISH.put("french/kouza", "まいにちフランス語【初級編】");
+		ENGLISH.put("french/kouza2", "まいにちフランス語【応用編】");
+		ENGLISH.put("spanish/kouza", "まいにちスペイン語【初級編】");
+		ENGLISH.put("spanish/kouza2", "まいにちスペイン語【応用編】");
+		ENGLISH.put("russian/kouza", "まいにちロシア語【初級編】");
+		ENGLISH.put("russian/kouza2", "まいにちロシア語【応用編】");
 	}
 	protected static Map<String, String> MULTILINGUAL = new LinkedHashMap<String, String>();
 	static {
+		MULTILINGUAL.put("6805", "小学生の基礎英語");
 		MULTILINGUAL.put("6806", "中学生の基礎英語_レベル1");
 		MULTILINGUAL.put("6807", "中学生の基礎英語_レベル2");
 		MULTILINGUAL.put("6808", "中高生の基礎英語_in_English");
@@ -90,18 +101,18 @@ public class MainActivity extends Activity {
 		MULTILINGUAL.put("6581", "ステップアップ中国語");
         MULTILINGUAL.put("0951", "まいにちハングル講座");
         MULTILINGUAL.put("6810", "ステップアップハングル講座");
-        MULTILINGUAL.put("0946", "まいにちイタリア語_入門編");
-        MULTILINGUAL.put("4411", "まいにちイタリア語_応用編");
-        MULTILINGUAL.put("0943", "まいにちドイツ語_入門編_初級編");
-        MULTILINGUAL.put("4410", "まいにちドイツ語_応用編");
+   		MULTILINGUAL.put("0946", "まいにちイタリア語_入門編");
+//      	MULTILINGUAL.put("4411", "まいにちイタリア語_応用編");
+ 		MULTILINGUAL.put("0943", "まいにちドイツ語_入門編_初級編");
+// 		MULTILINGUAL.put("4410", "まいにちドイツ語_応用編");
 		MULTILINGUAL.put("0953", "まいにちフランス語_入門編");
-        MULTILINGUAL.put("4412", "まいにちフランス語_応用編");
+//		MULTILINGUAL.put("4412", "まいにちフランス語_応用編");
 		MULTILINGUAL.put("0948", "まいにちスペイン語_入門編_初級編");
-        MULTILINGUAL.put("4413", "まいにちスペイン語_中級編_応用編");
+//        MULTILINGUAL.put("4413", "まいにちスペイン語_中級編_応用編");
 		MULTILINGUAL.put("0956", "まいにちロシア語_入門編");
-        MULTILINGUAL.put("4414", "まいにちロシア語_応用編");
+ //       MULTILINGUAL.put("4414", "まいにちロシア語_応用編");
 		MULTILINGUAL.put("0937", "アラビア語講座");
-		MULTILINGUAL.put("1893", "ポルトガル語講座_入門(前期)");
+//		MULTILINGUAL.put("1893", "ポルトガル語講座_入門(前期)");
 		MULTILINGUAL.put("2769", "ポルトガル語ステップアップ(後期)");
 		MULTILINGUAL.put("7155", "Living_in_Japan");
 		MULTILINGUAL.put("0701", "やさしい日本語");
