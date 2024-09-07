@@ -221,7 +221,7 @@ public class AsyncDownload extends AsyncTask<String, Integer, String> {
 						for (int m = 0; m < file_list.length(); m++) {
 							JSONObject file = file_list.getJSONObject(m);
 							String file_name = file.getString("stream_url");
-							String kouza = main.getString("program_title").replaceAll(" ", "_");
+							String kouza = obj.getString("title").replaceAll(" ", "_");
 							lastKouza = kouza;
 							String hdate = file.getString("onair_date");
 							lastHdate = hdate;
