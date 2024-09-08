@@ -22,10 +22,10 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - name: Tar files
-      run: tar cvf android.tar ./app/build/outputs/apk/
+    - name: Copy files
+      run: cp ./app/build/outputs/apk/ ./apk/ 
       
     - uses: actions/upload-artifact@v4
       with:
-        name: android
+        name: GogakuDroid
         path: android.tar
