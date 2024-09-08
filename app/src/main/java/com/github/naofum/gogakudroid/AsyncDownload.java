@@ -637,12 +637,12 @@ public class AsyncDownload extends AsyncTask<String, Integer, String> {
 			contentValues.put(MediaStore.Audio.Media.MIME_TYPE, "audio/mpeg");
 		} else if (inputFile.endsWith("og3")) {
 			contentValues.put(MediaStore.Audio.Media.MIME_TYPE, "audio/og3");
-//		} else if (inputFile.endsWith("3gp")) {
+		} else if (inputFile.endsWith("3gp")) {
 //			contentValues.put(MediaStore.Audio.Media.MIME_TYPE, "audio/3gpp");
 		} else if (inputFile.endsWith("3g2")) {
 			contentValues.put(MediaStore.Audio.Media.MIME_TYPE, "audio/3gpp2");
 		} else {
-			contentValues.put(MediaStore.Audio.Media.MIME_TYPE, "audio/aac");
+//			contentValues.put(MediaStore.Audio.Media.MIME_TYPE, "audio/aac");
 		}
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
