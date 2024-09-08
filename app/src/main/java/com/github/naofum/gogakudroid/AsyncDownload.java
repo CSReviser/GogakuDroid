@@ -213,24 +213,18 @@ public class AsyncDownload extends AsyncTask<String, Integer, String> {
 					JSONObject obj = new JSONObject(receiveStr);
 					Log.d(TAG, obj.getString("title"));
 					JSONArray detail_list = obj.getJSONArray("episodes");
-//					JSONObject main = obj.getJSONObject("main");
-//					JSONArray detail_list = main.getJSONArray("detail_list");
-//					Log.d(TAG, main.getString("program_name"));
 					for (int l = 0; l < detail_list.length(); l++) {
-//						JSONArray file_list = detail_list.getJSONObject(l).getJSONArray("file_list");
-//						for (int m = 0; m < file_list.length(); m++) {
-							JSONObject file = detail_list.getJSONObject(l);
-							String file_name = file.getString("stream_url");
-							String kouza = obj.getString("title").replaceAll(" ", "_");
-							lastKouza = kouza;
-							String hdate = file.getString("onair_date");
-							lastHdate = hdate;
-							download2(koza[i], kouza, hdate, file_name, "", type);
-							publishProgress(perc, currentkoza);
-							if (isCancelled()) {
-								return owner.getString(R.string.cancelled);
-							}
-//						}
+						JSONObject file = detail_list.getJSONObject(l);
+						String file_name = file.getString("stream_url");
+						String kouza = obj.getString("title").replaceAll(" ", "_");
+						lastKouza = kouza;
+						String hdate = file.getString("onair_date");
+						lastHdate = hdate;
+						download2(koza[i], kouza, hdate, file_name, "", type);
+						publishProgress(perc, currentkoza);
+						if (isCancelled()) {
+							return owner.getString(R.string.cancelled);
+						}
 					}
 				} catch (JSONException e) {
 					e.printStackTrace();
