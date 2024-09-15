@@ -741,6 +741,8 @@ out.avi – create this output file. Change it as you like, for example using an
 		useRunPie(cmd);
 //		cmd.add(mFfmpegBin);
 		cmd.add("-y");
+		cmd.add("-http_seekable");
+		cmd.add("0");
 		cmd.add("-protocol_whitelist");
 		cmd.add("file,http,https,tcp,tls,crypto");
 		cmd.add("-allowed_extensions");
@@ -820,6 +822,8 @@ out.avi – create this output file. Change it as you like, for example using an
 		useRunPie(cmd);
 //		cmd.add(mFfmpegBin);
 		cmd.add("-y");
+		cmd.add("-http_seekable");
+		cmd.add("0");
 		cmd.add("-protocol_whitelist");
 		cmd.add("file,http,https,tcp,tls,crypto");
 		cmd.add("-allowed_extensions");

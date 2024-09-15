@@ -83,7 +83,7 @@ public class AsyncDownload extends AsyncTask<String, Integer, String> {
 	protected ProgressDialog progressDialog;
 
 	protected static String TAG = AsyncDownload.class.getSimpleName();
-	protected static String AKAMAI = "https://nhks-vh.akamaihd.net/i/gogaku-stream/mp4/";
+	protected static String AKAMAI = "https://vod-stream.nhk.jp/gogaku-stream/";
 //	protected static String type = "3gp";
 	private PowerManager.WakeLock mWakeLock;
 
@@ -150,9 +150,9 @@ public class AsyncDownload extends AsyncTask<String, Integer, String> {
 			currentkoza = 100 * i / koza.length;
         	// file index of this week
         	if (MainActivity.ENGLISH.containsKey(koza[i])) {
-        	    url = "https://cgi2.nhk.or.jp/gogaku/st/xml/english/" + koza[i] + "/listdataflv.xml";
+        	    url = "https://www.nhk.or.jp/gogaku/st/xml/" + koza[i] + "/listdataflv.xml";
         	} else {
-				url = "https://www.nhk.or.jp/radioondemand/json/" + koza[i] + "/bangumi_" + koza[i] + "_01.json";
+				url = "https://www.nhk.or.jp/radio-api/app/v1/web/ondemand/series?site_id=" + koza[i] + "&corner_site_id=01";
         	}
 			try {
 				Request request = new Request.Builder()
@@ -191,7 +191,7 @@ public class AsyncDownload extends AsyncTask<String, Integer, String> {
 								kouza = xmlPullParser.getAttributeValue(null, "kouza");
 								hdate = xmlPullParser.getAttributeValue(null, "hdate");
 								file = xmlPullParser.getAttributeValue(null, "file");
-								file = AKAMAI + file + ".mp4/master.m3u8";
+								file = AKAMAI + file + "/index.m3u8";
 								nendo = xmlPullParser.getAttributeValue(null, "nendo");
 								lastKouza = kouza;
 								lastHdate = hdate;
@@ -211,23 +211,19 @@ public class AsyncDownload extends AsyncTask<String, Integer, String> {
 			} else {
 				try {
 					JSONObject obj = new JSONObject(receiveStr);
-					JSONObject main = obj.getJSONObject("main");
-					JSONArray detail_list = main.getJSONArray("detail_list");
-					Log.d(TAG, main.getString("program_name"));
+					Log.d(TAG, obj.getString("title"));
+					JSONArray detail_list = obj.getJSONArray("episodes");
 					for (int l = 0; l < detail_list.length(); l++) {
-						JSONArray file_list = detail_list.getJSONObject(l).getJSONArray("file_list");
-						for (int m = 0; m < file_list.length(); m++) {
-							JSONObject file = file_list.getJSONObject(m);
-							String file_name = file.getString("file_name");
-							String kouza = main.getString("program_name").replaceAll(" ", "_");
-							lastKouza = kouza;
-							String hdate = file.getString("onair_date");
-							lastHdate = hdate;
-							download2(koza[i], kouza, hdate, file_name, "", type);
-							publishProgress(perc, currentkoza);
-							if (isCancelled()) {
-								return owner.getString(R.string.cancelled);
-							}
+						JSONObject file = detail_list.getJSONObject(l);
+						String file_name = file.getString("stream_url");
+						String kouza = obj.getString("title").replaceAll(" ", "_");
+						lastKouza = kouza;
+						String hdate = file.getString("onair_date");
+						lastHdate = hdate;
+						download2(koza[i], kouza, hdate, file_name, "", type);
+						publishProgress(perc, currentkoza);
+						if (isCancelled()) {
+							return owner.getString(R.string.cancelled);
 						}
 					}
 				} catch (JSONException e) {
@@ -639,6 +635,8 @@ public class AsyncDownload extends AsyncTask<String, Integer, String> {
 			contentValues.put(MediaStore.Audio.Media.MIME_TYPE, "audio/3gpp");
 		} else if (inputFile.endsWith("3g2")) {
 			contentValues.put(MediaStore.Audio.Media.MIME_TYPE, "audio/3gpp2");
+		} else if (inputFile.endsWith("m4a")) {
+			contentValues.put(MediaStore.Audio.Media.MIME_TYPE, "audio/x-m4a");
 		} else {
 			contentValues.put(MediaStore.Audio.Media.MIME_TYPE, "audio/aac");
 		}
