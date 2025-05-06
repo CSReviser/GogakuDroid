@@ -22,6 +22,6 @@ android {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.google.android.gms:play-services-ads:23.3.0'
-    implementation 'com.arthenica:ffmpeg-kit-full:6.0.LTS'
+    implementation 'com.arthenica:ffmpeg-kit-full:6.0-2'
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
 }
