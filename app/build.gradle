@@ -19,13 +19,9 @@ android {
     namespace 'com.github.naofum.gogakudroid'
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.google.android.gms:play-services-ads:23.3.0'
-    implementation 'com.arthenica:ffmpeg-kit-full:6.0-2.LTS'
+    implementation 'com.arthenica:ffmpeg-kit-full:5.1.LTS'
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
 }
